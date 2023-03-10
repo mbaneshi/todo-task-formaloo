@@ -1,3 +1,4 @@
+import { ChakraProvider } from "@chakra-ui/react"
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -8,7 +9,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ChakraProvider>
+        <App />
+      </ChakraProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
@@ -17,3 +20,5 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// Do this at the root of your application

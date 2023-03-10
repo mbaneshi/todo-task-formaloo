@@ -1,22 +1,69 @@
-// src/components/App.js
-import { Routes, Route } from 'react-router-dom'
-// import supabaseClient from './supabaseClient'
-import Signup from './components/Signup'
-import Login from './components/Login'
-import Dashboard from './components/Dashboard'
-import About from "./components/About";
-import Home from "./components/Home";
-function App() {
+import React from "react";
+import { Heading } from "@chakra-ui/react";
+import TodoList from "./components/TodoList";
+import AddTodo from "./components/AddTodo";
+import { VStack, IconButton, useColorMode } from "@chakra-ui/react";
+import { FaSun, FaMoon } from "react-icons/fa";
+import { useState, useEffect } from "react";
 
-  console.log(process.env.REACT_APP_SUPABASE_URL)
+function App() {
+  const initialTodos = [
+    {
+      id: 1,
+      body: "Learn React",
+    },
+    {
+      id: 2,
+      body: "Learn Chakra UI",
+    },
+  ];
+
+  const [todos, setTodos] = useState(
+    () => JSON.parse(localStorage.getItem("todos")) || []
+  );
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+  function deleteTodo(id) {
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
+  }
+
+  function addTodo(todo) {
+    setTodos([...todos, todo]);
+  }
+
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="about" element={<About />} />
-      <Route path="dashboard" element={<Dashboard />} />
-      <Route path="signup" element={<Signup />} />
-      <Route path="login" element={<Login />} />
-    </Routes>
-  )
+    <VStack p={4}>
+      <IconButton
+        icon={colorMode === "light" ? <FaSun /> : <FaMoon />}
+        isRound="true"
+        size="lg"
+        alignSelf="flex-end"
+        onClick={toggleColorMode}
+      />
+      <Heading
+        mb="8"
+        fontWeight="extrabold"
+        size="2xl"
+        bgGradient="linear(to-r, blue.500, teal.300, blue.500)"
+        bgClip="text"
+      >
+        Todo Application
+      </Heading>
+      <TodoList todos={todos} deleteTodo={deleteTodo} />
+      <AddTodo addTodo={addTodo} />
+    </VStack>
+  );
 }
-export default App; 
+
+export default App;
+
+
+
+
+
