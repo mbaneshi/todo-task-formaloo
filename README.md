@@ -1,5 +1,4 @@
- app is alive at https://todo-task-formaloo.vercel.app/
-
+app is alive at https://todo-task-formaloo.vercel.app/
 
 # Getting Started with Create React App
 

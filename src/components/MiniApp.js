@@ -15,12 +15,6 @@ function MiniApp() {
   //   },
   // ];
 
-
-
-
-
-
-
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
@@ -39,7 +33,7 @@ function MiniApp() {
         bgGradient="linear(to-r, blue.500, teal.300, blue.500)"
         bgClip="text"
       >
-        Todo Task Group 
+        Todo Task Group
       </Heading>
       {/* <TodoList todos={todos} deleteTodo={deleteTodo} />
       <AddTodo addTodo={addTodo} /> */}
@@ -48,8 +42,3 @@ function MiniApp() {
 }
 
 export default MiniApp;
-
-
-
-
-

@@ -47,4 +47,3 @@ function AddTodo({ addTodo }) {
 }
 
 export default AddTodo;
-

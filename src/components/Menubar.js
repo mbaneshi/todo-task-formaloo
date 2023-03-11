@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 
-const  Menubar = () => {
+const Menubar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Menu isOpen={isOpen}>
@@ -24,7 +24,7 @@ const  Menubar = () => {
         onMouseEnter={onOpen}
         onMouseLeave={onClose}
       >
-                More {isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
+        More {isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
       </MenuButton>
       <MenuList onMouseEnter={onOpen} onMouseLeave={onClose}>
         <MenuItem>todos</MenuItem>

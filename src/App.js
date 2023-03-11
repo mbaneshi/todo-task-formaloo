@@ -6,25 +6,16 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import MiniApp from "./components/MiniApp";
 
-
-
 function App() {
+  //
 
-  
-  // 
-
-  return (<>
-    <Navbar />
-    <MiniApp />
-    <Home />
-  </>
-  );  
-
-  
+  return (
+    <>
+      <Navbar />
+      <MiniApp />
+      <Home />
+    </>
+  );
 }
 
 export default App;
-
-
-
-
