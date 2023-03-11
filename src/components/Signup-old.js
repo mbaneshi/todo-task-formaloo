@@ -1,11 +1,11 @@
-import { useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 function Signup() {
-  const emailRef = useRef()
-  const passwordRef = useRef()
+  const emailRef = useRef();
+  const passwordRef = useRef();
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
     // @TODO: add sign up logic
   }
@@ -30,6 +30,6 @@ function Signup() {
         Already have an account? <Link to="/login">Log In</Link>
       </p>
     </>
-  )
+  );
 }
 export default Signup;

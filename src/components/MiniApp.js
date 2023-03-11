@@ -1,39 +1,25 @@
 import React from "react";
 import { Heading } from "@chakra-ui/react";
-import TodoList from "./TodoList";
-import AddTodo from "./AddTodo";
 import { VStack, IconButton, useColorMode } from "@chakra-ui/react";
 import { FaSun, FaMoon } from "react-icons/fa";
-import { useState, useEffect } from "react";
 
 function MiniApp() {
-  const initialTodos = [
-    {
-      id: 1,
-      body: "Learn React",
-    },
-    {
-      id: 2,
-      body: "Learn Chakra UI",
-    },
-  ];
+  // const initialTodos = [
+  //   {
+  //     id: 1,
+  //     body: "Learn React",
+  //   },
+  //   {
+  //     id: 2,
+  //     body: "Learn Chakra UI",
+  //   },
+  // ];
 
-  const [todos, setTodos] = useState(
-    () => JSON.parse(localStorage.getItem("todos")) || []
-  );
 
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
 
-  function deleteTodo(id) {
-    const newTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(newTodos);
-  }
 
-  function addTodo(todo) {
-    setTodos([...todos, todo]);
-  }
+
+
 
   const { colorMode, toggleColorMode } = useColorMode();
 
@@ -49,14 +35,14 @@ function MiniApp() {
       <Heading
         mb="8"
         fontWeight="extrabold"
-        size="2xl"
+        size="xl"
         bgGradient="linear(to-r, blue.500, teal.300, blue.500)"
         bgClip="text"
       >
-        Todo Application
+        Todo Task Group 
       </Heading>
-      <TodoList todos={todos} deleteTodo={deleteTodo} />
-      <AddTodo addTodo={addTodo} />
+      {/* <TodoList todos={todos} deleteTodo={deleteTodo} />
+      <AddTodo addTodo={addTodo} /> */}
     </VStack>
   );
 }

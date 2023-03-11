@@ -1,9 +1,27 @@
 // Home.js file
 import { useEffect, useState } from "react";
 import supabaseClient from "../supabaseClient";
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem, Button, VStack } from "@chakra-ui/react";
+import TodoList from "./TodoList";
+import AddTodo from "./AddTodo"
 
 const Home = () => {
+  const [todos, setTodos] = useState(
+    () => JSON.parse(localStorage.getItem("todos")) || []
+  );
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+  function deleteTodo(id) {
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
+  }
+
+  function addTodo(todo) {
+    setTodos([...todos, todo]);
+  }
   const [group, setGroup] = useState(null);
 
   useEffect(() => {
@@ -13,7 +31,7 @@ const Home = () => {
       .then(({ data, error }) => {
         if (!error) {
           // setGroup(data)
-          console.log(data);
+
           setGroup(data);
         }
       });
@@ -21,17 +39,28 @@ const Home = () => {
 
   return (
     <>
-      <Grid templateColumns={"repeat(12,1fr)"}
+      <Grid
+        templateColumns={"repeat(12,1fr)"}
       >
-        <GridItem bg={"blue"} H={"100vh"} colSpan={{ base: 12, sm:4,md:3,xl:2 }}>
+        <GridItem minH={"100vh"} colSpan={{ base: 12, sm: 4, md: 3, xl: 2 }}>
+          <VStack>
           {group?.map((e) => {
-            return <h1 key={e.id}>{e.title}</h1>;
+            return (<>
+
+
+              <Button p={2} m={2} key={e.id} colorScheme="teal" px="8" type="submit">
+                {e.title}
+              </Button>
+              <AddTodo addTodo={addTodo} />
+            </>
+            );
+
           })}
+          </VStack>
         </GridItem>
-        <GridItem bg={"brown"} colSpan={{ base: 12,sm:8, md: 9,xl:10 }}>
-          <Box h={200} w={200}>
-            box{" "}
-          </Box>
+        <GridItem
+          colSpan={{ base: 12, sm: 8, md: 9, xl: 10 }}>
+          <TodoList todos={todos} deleteTodo={deleteTodo} />
         </GridItem>
       </Grid>
     </>

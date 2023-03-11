@@ -1,17 +1,28 @@
-import { Box, Button, Flex, Heading, Spacer } from "@chakra-ui/react"
+import { Button, Flex, Heading, Spacer } from "@chakra-ui/react"
 import Menubar from "./Menubar"
 const Navnar =()=>{
     return(
         <>
         
-        <Flex as="navbar" p={2} alignItems={"center"}>
+        <Flex
 
-            <Heading bg={"blackAlpha.50"}  as="h3" p={2}>Keep My Todo Orgnize !</Heading>
-            <Menubar/>
+          p={2}
+          alignItems={"center"}
+        >
+
+          <Heading
+
+            as="h5"
+            p={2}
+            bgGradient="linear(to-r, blue.500, teal.300, blue.500)"
+            bgClip="text"
+          >
+            Formaloo Task
+          </Heading>
+
             
             <Spacer/>
-            <Box p={3}>M</Box>
-            <Button bg={"gray.200"}>Login</Button>
+          <Button >Login</Button>
         </Flex>
         </>
     )
