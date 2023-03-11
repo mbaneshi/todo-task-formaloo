@@ -1,5 +1,5 @@
-import { Button, Flex, Heading, Spacer } from "@chakra-ui/react";
-import Menubar from "./Menubar";
+import { Button, Divider, Flex, Heading, Spacer } from "@chakra-ui/react";
+
 const Navnar = () => {
   return (
     <>
@@ -14,8 +14,9 @@ const Navnar = () => {
         </Heading>
 
         <Spacer />
-        <Button>Login</Button>
+
       </Flex>
+      <Divider />
     </>
   );
 };

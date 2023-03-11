@@ -4,21 +4,11 @@ import { VStack, IconButton, useColorMode } from "@chakra-ui/react";
 import { FaSun, FaMoon } from "react-icons/fa";
 
 function MiniApp() {
-  // const initialTodos = [
-  //   {
-  //     id: 1,
-  //     body: "Learn React",
-  //   },
-  //   {
-  //     id: 2,
-  //     body: "Learn Chakra UI",
-  //   },
-  // ];
 
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <VStack p={4}>
+    <VStack p={2}>
       <IconButton
         icon={colorMode === "light" ? <FaSun /> : <FaMoon />}
         isRound="true"
@@ -27,7 +17,7 @@ function MiniApp() {
         onClick={toggleColorMode}
       />
       <Heading
-        mb="8"
+        mb="4"
         fontWeight="extrabold"
         size="xl"
         bgGradient="linear(to-r, blue.500, teal.300, blue.500)"
@@ -35,8 +25,7 @@ function MiniApp() {
       >
         Todo Task Group
       </Heading>
-      {/* <TodoList todos={todos} deleteTodo={deleteTodo} />
-      <AddTodo addTodo={addTodo} /> */}
+
     </VStack>
   );
 }
